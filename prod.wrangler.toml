@@ -1,0 +1,7 @@
+entry-point = "build"
+name = "48ix-ixf"
+route = "ixf.48ix.net/*"
+type = "webpack"
+vars = {ENVIRONMENT = "production", CACHE_AGE = 43200}
+webpack_config = "webpack.config.js"
+zone_id = "c6b58512a7af9d50eae62274e8f55687"
