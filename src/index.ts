@@ -13,8 +13,8 @@ const RES_HEADERS = {
  */
 async function handleEvent(event: FetchEvent) {
   const headers = new Headers({
-    'content-type': 'application/json',
     'cache-control': `max-age=${CACHE_AGE}`,
+    ...RES_HEADERS,
   });
   // Default response is a generic error.
   let response = new Response(
@@ -56,7 +56,7 @@ async function handleCors(request: Request) {
   ) {
     return new Response(null, { headers: RES_HEADERS });
   } else {
-    return new Response(null, { headers: { Allow: 'POST, OPTIONS' } });
+    return new Response(null, { headers: { Allow: 'GET, OPTIONS' } });
   }
 }
 
