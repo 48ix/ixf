@@ -7,6 +7,9 @@
     <h3>
       WORKER: IXF
     </h3>
+    <a href="https://github.com/48ix/ixf/actions?query=workflow%3ATypeCheck">
+    <img src="https://img.shields.io/github/workflow/status/48ix/ixf/TypeCheck?color=%239100fa&event=push&style=for-the-badge" />
+  </a>
   </div>
 
 </div>
