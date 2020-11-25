@@ -5,7 +5,7 @@ const RES_HEADERS = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Headers': 'Content-Type, User-Agent',
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
 };
 
 /**
@@ -56,7 +56,7 @@ async function handleCors(request: Request) {
   ) {
     return new Response(null, { headers: RES_HEADERS });
   } else {
-    return new Response(null, { headers: { Allow: 'GET, OPTIONS' } });
+    return new Response(null, { headers: RES_HEADERS });
   }
 }
 
