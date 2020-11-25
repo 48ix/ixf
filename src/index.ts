@@ -1,5 +1,13 @@
 import { buildIxf } from './ixf';
 
+// Static headers for all responses.
+const RES_HEADERS = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Headers': 'Content-Type, User-Agent',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+};
+
 /**
  * Primary entry for request & response handling.
  */
@@ -38,8 +46,27 @@ async function handleEvent(event: FetchEvent) {
 }
 
 /**
+ * Handle CORS preflight.
+ */
+async function handleCors(request: Request) {
+  if (
+    request.headers.get('Origin') &&
+    request.headers.get('Access-Control-Request-Method') &&
+    request.headers.get('Access-Control-Request-Headers')
+  ) {
+    return new Response(null, { headers: RES_HEADERS });
+  } else {
+    return new Response(null, { headers: { Allow: 'POST, OPTIONS' } });
+  }
+}
+
+/**
  * Worker event listener.
  */
-addEventListener('fetch', event => {
-  event.respondWith(handleEvent(event));
+addEventListener('fetch', (event: FetchEvent) => {
+  if (event.request.method === 'OPTIONS') {
+    event.respondWith(handleCors(event.request));
+  } else {
+    event.respondWith(handleEvent(event));
+  }
 });
