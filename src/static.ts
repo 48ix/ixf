@@ -35,7 +35,7 @@ export const ixps = [
     shortname: '48 IX',
     name: '48 IX',
     ixp_id: 1,
-    ixf_id: 0,
+    ixf_id: 899,
     peeringdb_id: 3179,
     country: 'US',
     url: 'https://www.48ix.net/',
